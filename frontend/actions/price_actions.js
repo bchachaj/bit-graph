@@ -13,6 +13,12 @@ export const requestAllPrices = () => dispatch => {
   );
 };
 
+export const requestHistory = () => dispatch => {
+  return CoinAPI.fetchHistoricalData()
+  .then(prices => dispatch(receiveAllPrices(prices))
+);
+};
+
 export const receiveAllPrices = (prices) => ({
   type: RECEIVE_ALL_PRICES,
   prices

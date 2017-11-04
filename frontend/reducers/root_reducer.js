@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import priceReducer from './price_reducer';
 
 const rootReducer = combineReducers({
-  priceReducer
+  hist_prices: priceReducer
 });
 
 
