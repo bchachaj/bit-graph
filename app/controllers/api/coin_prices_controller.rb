@@ -1,7 +1,6 @@
 class Api::CoinPricesController < ApplicationController
   def index
-    @coins = CoinPrice.all
-    # render 'coin_prices/index.json.builder'
+    @coins = CoinPrice.last(20).reverse
   end
 
   def show
@@ -9,7 +8,7 @@ class Api::CoinPricesController < ApplicationController
   end
 
   def create
-    @coin = CoinPrice.new(coin_params)
+    @coin = CoinPrice.create!(coin_price: params[:coin])
     if @coin.save
       render :show
     else
@@ -17,9 +16,4 @@ class Api::CoinPricesController < ApplicationController
     end
   end
 
-  private
-
-  def coin_params
-    params.require(:coin_price).permit(:coin_price)
-  end
 end

@@ -3,6 +3,7 @@ import * as CoinAPI from '../util/coindesk_api';
 
 export const RECEIVE_ALL_PRICES = 'RECEIVE_ALL_PRICES';
 export const RECEIVE_CURRENT_PRICE = 'RECEIVE_CURRENT_PRICE';
+export const DYNAMIC_PRICES = 'DYNAMIC_PRICES';
 
 
 export const requestCurrentPrice = () => dispatch => {
@@ -22,13 +23,19 @@ export const receiveCurrentPrice = (price) => ({
   type: RECEIVE_CURRENT_PRICE,
   price
 });
-//Get index of daily recorded prices from db
 
-// export const requestAllPrices = () => dispatch => {
-//   return PriceAPI.fetchPriceData()
-//     .then(prices => dispatch(receiveAllPrices(prices))
-//   );
-// };
+
+//Get index of last n prices from db
+export const requestAllPrices = () => dispatch => {
+  return PriceAPI.fetchPriceData()
+    .then(prices => dispatch(receiveDynamicPrices(prices))
+  );
+};
+
+export const receiveDynamicPrices = (prices) => ({
+  type: DYNAMIC_PRICES,
+  prices
+});
 
 
 export const receiveAllPrices = (prices) => ({
@@ -36,9 +43,8 @@ export const receiveAllPrices = (prices) => ({
   prices
 });
 
-//future db call
-// export const addCurrentPrice = (price) => dispatch => {
-//   return PriceAPI.recordCurrentPrice(price)
-//     .then(prc => dispatch(receiveCurrentPrice(prc))
-//   );
-// };
+export const addCurrentPrice = (price) => dispatch => {
+  return PriceAPI.recordCurrentPrice(price)
+    .then(prc => dispatch(receiveCurrentPrice(prc))
+  );
+};

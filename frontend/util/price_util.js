@@ -1,7 +1,8 @@
 export const recordCurrentPrice = (price) => {
   return $.ajax({
     method: 'POST',
-    url:'tdb',
+    url:`/api/coin_prices`,
+    data: { coin: price }
   });
 };
 

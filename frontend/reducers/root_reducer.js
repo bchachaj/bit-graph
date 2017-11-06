@@ -5,7 +5,7 @@ import dynamicReducer from './dynamic_reducer';
 
 const rootReducer = combineReducers({
   hist_prices: priceReducer,
-  dynamic_price: dynamicReducer,
+  dynamic_prices: dynamicReducer,
 });
 
 

@@ -7,6 +7,7 @@ class DynamicGraph extends React.Component {
     super(props);
   }
 
+
   render() {
 
     let {graphData} = this.props;
@@ -22,6 +23,12 @@ class DynamicGraph extends React.Component {
       },
       width = 1550 - margin.left - margin.right,
       height = 530 - margin.top - margin.bottom;
+
+
+      graphData.map((d) => {
+        d.y = d.coin_price;
+        d.x = graphData.indexOf(d);}
+      );
 
       var x = d3.scale.linear()
           .domain([0, d3.max(graphData, function(d){ return d.x; })])
@@ -44,6 +51,9 @@ class DynamicGraph extends React.Component {
     const div = d3.select("body")
                   .append("div").attr("class", "tooltip")
                   .style("opacity", 0);
+
+
+    d3.select("#d-visualisation").selectAll("svg").remove();
 
     const svg = d3.select("#d-visualisation")
                   .append("svg")
@@ -103,6 +113,8 @@ class DynamicGraph extends React.Component {
           .attr("transform", "translate(0," + height + ")")
           .call(xAxis);
       svg.append("g").attr("class", "y axis").call(yAxis);
+
+
 
     return (
       <div>
