@@ -1,6 +1,8 @@
 import React from 'react';
 import * as CoinAPI from '../../util/coindesk_api';
 import Graph from '../graph/graph';
+import * as GraphAPI from '../../util/bpi_format.js';
+
 
 class Historical extends React.Component {
   constructor(props) {
@@ -14,13 +16,12 @@ class Historical extends React.Component {
 
   render() {
     // destructure and format data
-    const { prices } = this.props;
-    console.log(prices);
+    const {prices} = this.props;
+    let formatted = GraphAPI.graphDataFormat(prices);
     return (
       <div className="row">
-        <h1>Last 30 days</h1>
         <div className="graph">
-          <Graph data={this.props.prices}/>
+          <Graph graphData={formatted}/>
         </div>
       </div>
     );

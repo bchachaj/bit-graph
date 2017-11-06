@@ -5,13 +5,12 @@ export const RECEIVE_ALL_PRICES = 'RECEIVE_ALL_PRICES';
 export const RECEIVE_CURRENT_PRICE = 'RECEIVE_CURRENT_PRICE';
 
 
-//Get index of daily recorded prices from db
-
-export const requestAllPrices = () => dispatch => {
-  return PriceAPI.fetchPriceData()
-    .then(prices => dispatch(receiveAllPrices(prices))
+export const requestCurrentPrice = () => dispatch => {
+  return CoinAPI.fetchCurrentPrice()
+    .then(res => dispatch(receiveCurrentPrice(res))
   );
 };
+
 
 export const requestHistory = () => dispatch => {
   return CoinAPI.fetchHistoricalData()
@@ -19,19 +18,27 @@ export const requestHistory = () => dispatch => {
 );
 };
 
+export const receiveCurrentPrice = (price) => ({
+  type: RECEIVE_CURRENT_PRICE,
+  price
+});
+//Get index of daily recorded prices from db
+
+// export const requestAllPrices = () => dispatch => {
+//   return PriceAPI.fetchPriceData()
+//     .then(prices => dispatch(receiveAllPrices(prices))
+//   );
+// };
+
+
 export const receiveAllPrices = (prices) => ({
   type: RECEIVE_ALL_PRICES,
   prices
 });
 
-export const addCurrentPrice = (price) => dispatch => {
-  // post price then retrieve all prices?
-  return PriceAPI.recordCurrentPrice(price)
-    .then(prc => dispatch(receiveCurrentPrice(prc))
-  );
-};
-
-export const receiveCurrentPrice = (price) => ({
-  type: RECEIVE_CURRENT_PRICE,
-  price
-});
+//future db call
+// export const addCurrentPrice = (price) => dispatch => {
+//   return PriceAPI.recordCurrentPrice(price)
+//     .then(prc => dispatch(receiveCurrentPrice(prc))
+//   );
+// };

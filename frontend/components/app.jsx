@@ -1,12 +1,14 @@
 import React from 'react';
-import Historical from './historical/hist_container';
+import Historical from './static_view/hist_container';
+import DynamicView from './dynamic_view/dynamic_view';
 
 
 const App = () => {
   return (
     <div>
-    <h1>Works</h1>
-    <Historical/>
+    <h2>Title</h2>
+    {/* <Historical/> */}
+    <DynamicView/>
     </div>
   );
 
