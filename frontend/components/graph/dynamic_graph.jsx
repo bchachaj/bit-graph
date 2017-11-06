@@ -2,7 +2,7 @@ import React from 'react';
 import * as d3 from "d3";
 import {event as currentEvent} from 'd3';
 
-class Graph extends React.Component {
+class DynamicGraph extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -45,7 +45,7 @@ class Graph extends React.Component {
                   .append("div").attr("class", "tooltip")
                   .style("opacity", 0);
 
-    const svg = d3.select("#visualisation")
+    const svg = d3.select("#d-visualisation")
                   .append("svg")
                   .attr("width", width + margin.left + margin.right)
                   .attr("height", height + margin.top + margin.bottom)
@@ -106,12 +106,12 @@ class Graph extends React.Component {
 
     return (
       <div>
-        <h1>Bitcoin Liquid Index Price: Last 30 Days</h1>
-        <svg id="visualisation" width="1550" height="530"></svg>
+        <h1>Active Index Price: Last 3 Hours</h1>
+        <svg id="d-visualisation" width="1550" height="530"></svg>
       </div>
     );
   }
 
 }
 
-export default Graph;
+export default DynamicGraph;

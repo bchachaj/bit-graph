@@ -7,12 +7,12 @@ export const fetchHistoricalData = () => {
   });
 };
 
-export const fetchCurrentPrice= () => {
+export const fetchCurrentPrice = () => {
   return $.ajax({
     method: 'GET',
-    url: 'https://api.coindesk.com/v1/bpi/currentprice.json'
-  }).then(r => r.json())
-    .then(data => console.log(data));
+    url: 'https://api.coindesk.com/v1/bpi/currentprice.json',
+    dataType:'json',
+  });
 };
 
 

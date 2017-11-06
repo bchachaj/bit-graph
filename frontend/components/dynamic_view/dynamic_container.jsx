@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DynamicView from './dynamic_view';
-
+import { requestCurrentPrice } from '../../actions/price_actions';
 
 const mapStateToProps = state => {
   return {
-    stuff: 'Stuff',
-  };
+   prices: state.hist_prices,
+ };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    requestCurrentPrice: () => dispatch(requestCurrentPrice())
   };
 };
 
