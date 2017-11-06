@@ -8,6 +8,6 @@ export const recordCurrentPrice = (price) => {
 export const fetchPriceData = () => {
   return $.ajax({
     method: 'GET',
-    url:'Allrecords',
+    url:'/api/coin_prices',
   });
 };
