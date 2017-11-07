@@ -10,13 +10,14 @@ class DynamicView extends React.Component {
   }
 
   componentDidMount(){
+    this.props.requestCurrentPrice().then(data => this.props.addCurrentPrice(data.price.bpi.USD.rate_float)).then(() => this.props.requestAllPrices());
     const intervalQueryPriceAndSave = setInterval(
            (function(scope){
                return function(){
                    scope.props.requestCurrentPrice().then(data => scope.props.addCurrentPrice(data.price.bpi.USD.rate_float)).then(() => scope.props.requestAllPrices());
                };
             })(this),
-           3000
+           10000
        );
 
 
@@ -25,8 +26,8 @@ class DynamicView extends React.Component {
 
   render(){
   let { prices } = this.props;
-  // let formatted = GraphAPI.graphDataFormat(prices);
-  const dataSet = values(this.props.priceData.updated_prices);
+  let dataSet = values(this.props.priceData);
+  dataSet = dataSet.filter((d) => d.coin_price);
     return(
       <div>
         <h1>Last 5 Hours:</h1>

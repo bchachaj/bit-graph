@@ -20,8 +20,10 @@ class Graph extends React.Component {
         bottom: 30,
         left: 60
       },
-      width = 1550 - margin.left - margin.right,
+      width = 870 - margin.left - margin.right,
       height = 530 - margin.top - margin.bottom;
+
+
 
       var x = d3.scale.linear()
           .domain([0, d3.max(graphData, function(d){ return d.x; })])
@@ -55,6 +57,8 @@ class Graph extends React.Component {
       x.domain(d3.extent(graphData, function(d) {
         return d.x;
       }));
+
+
       y.domain([
         0,
         d3.max(graphData, function(d) {

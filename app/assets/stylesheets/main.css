@@ -4,15 +4,38 @@
   stroke-width: 2px;
 }
 
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+
+.active-line {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+
 div.tooltip {
   position: absolute;
   margin-bottom: 10px;
   text-align: center;
   width: 60px;
-  height: 48px;
+  height: 40px;
   padding: 4px;
   font: 12px sans-serif;
   background: lightblue;
+  border: 0px;
+  pointer-events: none;
+}
+div.active-tooltip {
+  position: absolute;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 60px;
+  height: 40px;
+  padding: 4px;
+  font: 12px sans-serif;
+  background: orange;
   border: 0px;
   pointer-events: none;
 }
@@ -20,4 +43,14 @@ div.tooltip {
 .area {
     fill: lightsteelblue;
     stroke-width: 0;
+}
+
+.active-area {
+  fill: orange;
+  stroke-width:0;
+}
+
+.axis path{
+  stroke-width:0;
+  color: #eee;
 }

@@ -11,8 +11,7 @@ const dynamicReducer = (state = {}, action) => {
     return newState;
   case DYNAMIC_PRICES:
     const prices = action.prices;
-    newState = merge({}, state, {['updated_prices']: prices});
-    return newState;
+    return prices;
   default:
   return state;
   }
