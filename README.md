@@ -1,24 +1,17 @@
-# README
+# Bitcoin Liquidity in D3, React, Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Querying the CoinDesk API, the application records a snapshot of the current price and displays a graph of the updated information.
 
-Things you may want to cover:
+To set up locally:
 
-* Ruby version
+* run 'bundle install'
 
-* System dependencies
+* run 'rake db:create db:migrate db:seed'
 
-* Configuration
+* run 'npm install'
 
-* Database creation
+* run 'bundle exec rails s'
 
-* Database initialization
+* run 'npm start'
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+TODO: Break svg graphs apart into React components, add market share distribution graph
