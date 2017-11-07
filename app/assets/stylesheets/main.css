@@ -4,6 +4,13 @@
   stroke-width: 2px;
 }
 
+h5 {
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  color: #2f4f4f;
+}
+
 body {
   font-family: sans-serif;
   font-family: "Lucida Console", sans-serif;
@@ -51,7 +58,7 @@ ul.t-header {
 
 .active-line {
   fill: none;
-  stroke: #689F38;
+  stroke: #2f4f4f;
   stroke-width: 2px;
 }
 
@@ -90,7 +97,7 @@ circle:hover {
 }
 
 .active-area {
-  fill: #C6FF00;
+  fill: aliceblue;
   stroke-width:0;
 }
 
@@ -107,6 +114,7 @@ circle:hover {
   width: 850px;
   margin: 0 auto;
 }
+
 .graph:first-child {
   margin-top: 15px;
 }

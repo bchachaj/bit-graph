@@ -8,7 +8,13 @@ const App = () => {
     <div>
     <div className="nav-bar">
       <h2>Bitcoin Liquidity Index</h2>
-      <h4>Rendered with React + D3. Data provided by <a href="https://www.coindesk.com/api/">CoinDesk</a></h4>
+      <h4>
+      Rendered with React + D3 <br/>
+      Data provided by <a href="https://www.coindesk.com/api/">CoinDesk</a> and stored in PostreSQL
+    </h4>
+    <h5>
+      <a href="https://github.com/bchachaj/bit-graph">Github Repo</a>
+    </h5>
     </div>
     <DynamicView/>
     <Historical/>
