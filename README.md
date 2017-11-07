@@ -15,3 +15,6 @@ To set up locally:
 * run 'npm start'
 
 TODO: Break svg graphs apart into React components, add market share distribution graph
+
+
+Heroku Link: https://bit-graph.herokuapp.com/#/
