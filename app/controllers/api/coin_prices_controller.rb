@@ -1,6 +1,6 @@
 class Api::CoinPricesController < ApplicationController
   def index
-    @coins = CoinPrice.last(20).reverse
+    @coins = CoinPrice.last(24).reverse
   end
 
   def show

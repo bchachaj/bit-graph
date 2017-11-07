@@ -109,9 +109,9 @@ class Graph extends React.Component {
       svg.append("g").attr("class", "y axis").call(yAxis);
 
     return (
-      <div>
-        <h1>Bitcoin Liquid Index Price: Last 30 Days</h1>
-        <svg id="visualisation" width="1550" height="530"></svg>
+      <div className="graph">
+        <h1>Bitcoin Price Index: Last 30 Days</h1>
+        <svg id="visualisation" width="870" height="530"></svg>
       </div>
     );
   }

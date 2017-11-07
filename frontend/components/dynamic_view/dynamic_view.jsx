@@ -10,14 +10,14 @@ class DynamicView extends React.Component {
   }
 
   componentDidMount(){
-    this.props.requestCurrentPrice().then(data => this.props.addCurrentPrice(data.price.bpi.USD.rate_float)).then(() => this.props.requestAllPrices());
+    this.props.requestAllPrices();
     const intervalQueryPriceAndSave = setInterval(
            (function(scope){
                return function(){
                    scope.props.requestCurrentPrice().then(data => scope.props.addCurrentPrice(data.price.bpi.USD.rate_float)).then(() => scope.props.requestAllPrices());
                };
             })(this),
-           10000
+           3600000
        );
 
 
@@ -25,16 +25,34 @@ class DynamicView extends React.Component {
 
 
   render(){
-  let { prices } = this.props;
+  const { prices } = this.props;
   let dataSet = values(this.props.priceData);
   dataSet = dataSet.filter((d) => d.coin_price);
+  dataSet.map((d) => {
+    d.date = (new Date(d.created_at).toString());
+  });
+
+  const tableRows = dataSet.reverse().map((item, idx) =>
+    <li className="table_row" key={Math.random() * 100 + idx}>
+      <span><p>{item.date}</p></span>
+      <span><p>${item.coin_price}</p></span>
+    </li>
+  );
+
     return(
       <div>
-        <h1>Last 5 Hours:</h1>
-        <div className="rickshaw"></div>
-        <p>Trending: Up</p>
-        <div className="report"></div>
         <DynamicGraph graphData={dataSet}/>
+        <div className="data-report">
+          <ul className="t-header">
+            <li className="table_row">
+              <span>Record</span>
+              <span>Price Per Unit (USD)</span>
+            </li>
+          </ul>
+          <ul className="table">
+            { tableRows }
+          </ul>
+        </div>
       </div>
     );
   }

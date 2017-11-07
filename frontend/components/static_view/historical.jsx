@@ -20,9 +20,7 @@ class Historical extends React.Component {
     let formatted = GraphAPI.graphDataFormat(prices);
     return (
       <div className="row">
-        <div className="graph">
           <Graph graphData={formatted}/>
-        </div>
       </div>
     );
   }
